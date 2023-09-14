@@ -3,13 +3,14 @@ Database models.
 """
 from django.db import models
 from django.contrib.auth.models import (
-    AbstractBaseUser, 
+    AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
 )
 
 class UserManager(BaseUserManager):
     """Manager for users."""
+
     def create_user(self, email, password=None, **extra_field):
         """Create, save and return a new user."""
         if not email:
@@ -25,10 +26,9 @@ class UserManager(BaseUserManager):
         user = self.create_user(email, password)
         user.is_staff = True
         user.is_superuser = True
-        user.save(using= self._db)
+        user.save(using=self._db)
 
         return user
-
 
 class User(AbstractBaseUser, PermissionsMixin):
     """user in the system."""
