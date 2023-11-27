@@ -383,7 +383,7 @@ class PrivateRecipeApiTests(TestCase):
 class ImageUploadTests(TestCase):
     """Tests for the image upload API."""
 
-    def setup(self):
+    def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
             'user@example.com',
